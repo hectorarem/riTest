@@ -11,7 +11,8 @@ class SignUpForm(forms.ModelForm):
         ]
     def clean(self):
         email = str(self.cleaned_data.get('email'))
-        self.cleaned_data.setdefault('username', email.split('@')[0])
+        username = email.split('@')[0] + '_' +email.split('@')[1].split('.')[0]
+        self.cleaned_data.setdefault('username',  username )
         self.cleaned_data.setdefault('email', email)
 
 class UserUpdate(forms.ModelForm):

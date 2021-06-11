@@ -25,4 +25,9 @@ urlpatterns = [
     path('user/detail/<int:pk>', login_required(views.getUser), name='user_detail'),
     path('user/update/<int:pk>', login_required(views.updateUser), name='user_update'),
     path('user/delete/<int:pk>/', login_required(views.userDelete), name='user_delete'),
+    #1 - 4 exercises
+    path('closer-prime/<int:number>', views.closePrime, name='closer_prime'),
+    path('pokemon-type/<str:name>', views.getPokemonType, name='get_pokemon_type'),
+    path('pokemon-type-array/<str:name>', views.getPokemonTypeArray, name='get_pokemon_type_array'),
+    path('pokemon-type-array-started/<str:name>/<str:start>', views.getPokemonTypeArrayStartWith, name='get_pokemon_type_array_started'),
 ]

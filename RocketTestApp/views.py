@@ -1,7 +1,55 @@
 from django.http import JsonResponse
+import requests
 
-from RocketTestApp import models, forms
+from RocketTest.settings import POKEMON_API
+from RocketTestApp import models, forms, utils
 
+
+def closePrime(request, number):
+    res = {
+        'number posted': number,
+        'number posted is prime too?': 'Yes' if utils.isPrime(number) else 'No',
+        'closer prime': utils.closePrimeNumber(number),
+    }
+    return JsonResponse(res)
+
+def getPokemonType(request, name):
+    url = f"{POKEMON_API}type/{name}"
+    response = requests.get(url)
+    if response.ok:
+        return JsonResponse(response.json())
+    else:
+        return JsonResponse({'error': response.status_code})
+
+def getPokemonTypeArray(request, name):
+    url = f"{POKEMON_API}type/{name}"
+    response = requests.get(url)
+    if response.ok:
+        try:
+            pokemons = response.json()['pokemon']
+            return JsonResponse({'count': len(pokemons), 'pokemons': pokemons})
+        except:
+            return JsonResponse({})
+    else:
+        return JsonResponse({'error': response.status_code})
+
+def getPokemonTypeArrayStartWith(request, name, start):
+    url = f"{POKEMON_API}type/{name}"
+    response = requests.get(url)
+    if response.ok:
+        try:
+            pokemons = response.json()['pokemon']
+            filter = [value for value in pokemons if (str(value['pokemon']['name'][0:len(start)]).lower() == start)]
+            res = {
+                'start with': start,
+                'count': len(filter),
+                'pokemons': filter
+            }
+            return JsonResponse(res)
+        except:
+            return JsonResponse({})
+    else:
+        return JsonResponse({'error': response.status_code})
 
 def createUser(request):
     if request.POST:
@@ -9,11 +57,12 @@ def createUser(request):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             email = form.cleaned_data.get('email')
-            print(form.cleaned_data)
             password = form.cleaned_data.get('password')
-            print(username, email, password)
-            models.UserApp.objects.create_user(username=username, email=email, password=password)
-            return JsonResponse({'success': 'User created successfully'})
+            try:
+                models.UserApp.objects.create_user(username=username, email=email, password=password)
+                return JsonResponse({'success': 'User created successfully'})
+            except:
+                return JsonResponse({'error': 'The user exist in our database, restore your password!'})
         else:
             return JsonResponse({'error': 'Something is wrong in your form, check again!'})
     else:
@@ -61,11 +110,11 @@ def getUser(request, pk):
 
 def userDelete(request, pk):
     if request.user.is_superuser:
-        delete = models.UserApp.objects.get(pk=pk).delete()
-        if delete:
+        try:
+            models.UserApp.objects.get(pk=pk).delete()
             return JsonResponse({'success': 'User deleted'})
-        else:
-            return JsonResponse({'error': 'Ups!, user was not deleted'})
+        except:
+            return JsonResponse({'error': 'Ups!, user dont found'})
     elif request.user.pk == pk:
         user = models.UserApp.objects.get(pk=pk)
         user.is_active = False
