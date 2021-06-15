@@ -110,7 +110,22 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/detail/7",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"detail",
+						"7"
+					]
+				}
 			},
 			"response": []
 		},
@@ -119,7 +134,260 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": null
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/delete/12",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"delete",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Closer Prime",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/closer-prime/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"closer-prime",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get pokemon type",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/pokemon-type/ground",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"pokemon-type",
+						"ground"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pokemon Type Array",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/pokemon-type-array/ground",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"pokemon-type-array",
+						"ground"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get pokemon type array started",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/pokemon-type-array-started/ground/a",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"pokemon-type-array-started",
+						"ground",
+						"a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DRF Get User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token aa328bbe3c6c09d3c1031d60f10c3fe68e775636",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/31ef44ec-6814-49c5-a38e-09d4e1e31b19",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"31ef44ec-6814-49c5-a38e-09d4e1e31b19"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DRF get user List Normal User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token b1347f584b4ab7c3f1fd769f430f3819eb7b008e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DRF get user List Staff User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token aa328bbe3c6c09d3c1031d60f10c3fe68e775636",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DRF delete user Normal User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token b1347f584b4ab7c3f1fd769f430f3819eb7b008e",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/6ba01194-5ace-4d62-9bdf-86874bab4dbc/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"6ba01194-5ace-4d62-9bdf-86874bab4dbc",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DRF delete user Super User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "token aa328bbe3c6c09d3c1031d60f10c3fe68e775636",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/user/6ba01194-5ace-4d62-9bdf-86874bab4dbc/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"user",
+						"6ba01194-5ace-4d62-9bdf-86874bab4dbc",
+						""
+					]
+				}
 			},
 			"response": []
 		}
