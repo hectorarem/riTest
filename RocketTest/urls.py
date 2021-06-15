@@ -15,16 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 
 from RocketTestApp import views
+router = routers.DefaultRouter()
+router.register(r'user', views.UserAppQuerySet, basename="")
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/create', views.createUser, name='create_user'),
-    path('user/detail/<int:pk>', login_required(views.getUser), name='user_detail'),
-    path('user/update/<int:pk>', login_required(views.updateUser), name='user_update'),
-    path('user/delete/<int:pk>/', login_required(views.userDelete), name='user_delete'),
+    path('user/singup', views.createUser, name='create_user'),
+    path('', include(router.urls)),
     #1 - 4 exercises
     path('closer-prime/<int:number>', views.closePrime, name='closer_prime'),
     path('pokemon-type/<str:name>', views.getPokemonType, name='get_pokemon_type'),
